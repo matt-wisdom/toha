@@ -6,10 +6,10 @@
           {{ $logoImage := resources.Get .logo }}
           {{/*  svg don't support "Fit" operation   */}}
           {{ if ne $logoImage.MediaType.SubType "svg" }}
-            {{ $logoImage = $logoImage.Fit "24x24" }}
+            {{ $logoImage = $logoImage.Fit "60x60" }}
           {{ end }}
         
-          <img class="card-img-xs" src="{{ $logoImage.RelPermalink }}" alt="{{ .name }}" />
+          <img style="object-fit: contain; margin-right: 0.5em" width="30" height="30" src="{{ $logoImage.RelPermalink }}" alt="{{ .name }}" />
           <h5 class="card-title">{{ .name }}</h5>
         {{ else if .icon }}
           {{ $iconName := .icon }}

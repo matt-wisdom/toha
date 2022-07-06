@@ -29,7 +29,7 @@
 
 {{/* apply image processing. don't use "Fit" in svg or gif because its not supported */}}
 {{ if and $authorImage (and (ne $authorImage.MediaType.SubType "svg") ( ne $authorImage.MediaType.SubType "gif")) }}
-  {{ $authorImage = $authorImage.Fit "148x148" }}
+  {{ $authorImage = $authorImage.Fit "500x500" }}
 {{ end }}
 {{/* get file that matches the filename as specified as src="" in shortcode */}}
 {{ $src := resources.Get $backgroundImage }}
@@ -109,7 +109,7 @@
   <div class="container content text-center">
     <img src="{{ $authorImage.RelPermalink }}"
       class="rounded-circle mx-auto d-block img-fluid"
-      alt="Author Image"
+      alt="Author Image" style="object-fit: cover"
     />
     <h1 class="greeting"> {{ $author.greeting }} {{ $name }}</h1>
     {{ if $author.subtitle }}
